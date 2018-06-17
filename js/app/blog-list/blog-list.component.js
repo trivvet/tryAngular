@@ -2,7 +2,7 @@
 
 angular.module('blogList').
     component('someList', {
-        template: "<div><h1 class='new'>{{ title }}</h1><button ng-click='onlyTest()'>Click me!</button></div>",
+        templateUrl: "/templates/blog-list.html",
         controller: function($scope){
             $scope.title = "hello guys";
             $scope.click = 1;
