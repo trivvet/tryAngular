@@ -4,3 +4,17 @@
     </h1>
     <button ng-click='onlyTest()'>Click me!</button>
 </div>
+
+<div>
+    <h1>Blog List</h1>
+    <ul>
+        <li ng-repeat='item in items'>
+            <h2><a href="/blog/{{ item.id }}/">{{ item.title }}</a></h2>
+            <span>{{ item.publishedDate }}</span>
+            <p>{{ item.description }}</p>
+        </li>
+    </ul>
+
+    <span ng-if='items.length == 4'>We have 4 blogs</span>
+
+</div>
