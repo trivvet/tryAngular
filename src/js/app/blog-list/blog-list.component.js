@@ -3,7 +3,7 @@
 angular.module('blogList').
     component('someList', {
         templateUrl: "/templates/blog-list.html",
-        controller: function($scope){
+        controller: function($routeParams, $scope){
             var blogItems = [
                 {
                     id: 1,
@@ -34,7 +34,6 @@ angular.module('blogList').
             $scope.items = blogItems;
             $scope.title = "hello guys";
             $scope.click = 1;
-            console.log("We here!");
             $scope.onlyTest = function(){
                 console.log("is Clicked");
                 $scope.title = "is clicked " + $scope.click;
