@@ -12,13 +12,13 @@ angular.module('try').
             });
             $routeProvider.
                 when("/", {
-                    template: "<blog-list></blog-list>"
+                    template: "<some-list></some-list>"
                 }).
                 when("/blog/1", {
                     template: "<h1>Hi</h1>"
                 }).
                 when("/blog/2", {
-                    template: "<blog-list></blog-list>"
+                    template: "<some-list></some-list>"
                 }).
                 otherwise({
                     template: "<h1>Not Found</h1>"
