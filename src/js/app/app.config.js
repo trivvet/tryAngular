@@ -20,6 +20,9 @@ angular.module('try').
                 when("/blog/:id", {
                     template: "<blog-detail></blog-detail>"
                 }).
+                when("/405", {
+                    template: "<h1>There is problems with Data Base</h1>"
+                }).
                 otherwise({
                     template: "<h1>Not Found</h1>"
                 })
