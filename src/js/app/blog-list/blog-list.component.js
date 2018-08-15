@@ -3,13 +3,11 @@
 angular.module('blogList').
     component('someList', {
         templateUrl: "/templates/blog-list.html",
-        controller: function($http, $location, $routeParams, $scope){
-            $http.get("/json/posts.json").
-                then(function successCallback(response) {
-                    $scope.items = response.data;
-                }, function errorCallback(response) {
-                    $location.path("/405");    
-                });
+        controller: function(Post, $location, $routeParams, $scope){
+            
+            Post.query(function(data){
+                $scope.items = data;
+            });
 
             $scope.title = "hello guys";
             $scope.click = 1;
