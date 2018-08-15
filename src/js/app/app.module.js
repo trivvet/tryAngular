@@ -7,5 +7,6 @@ angular.module('try', [
 
     // internal
     'blogList',
-    'blogDetail'
+    'blogDetail',
+    'confirmClick',
 ]);
