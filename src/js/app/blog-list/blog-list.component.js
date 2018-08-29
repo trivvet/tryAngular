@@ -3,8 +3,12 @@
 angular.module('blogList').
     component('someList', {
         templateUrl: "/templates/blog-list.html",
-        controller: function(Post, $location, $routeParams, $scope){
-            
+        controller: function(Post, $location, $routeParams, $rootScope, $scope){
+            $scope.goToItem = function(item) {
+                $rootScope.$apply(function() {
+                    $location.path('/blog/' + item.id);        
+                });
+            }
             Post.query(function(data){
                 $scope.items = data;
             });
