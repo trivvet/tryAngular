@@ -9,7 +9,7 @@
     <h1>Blog List</h1>
     <ul>
         <li ng-repeat='item in items'>
-            <h2><confirm-click message="Are you positive?" post="item"></confirm-click></h2>
+            <h2><a ng-href="/blog/{{ item.id }}" confirm-click="Are you sure?" confirm-clicked="/blog/{{ item.id }}">{{ item.title }}</a></h2>
             <span>{{ item.publishedDate }}</span>
             <p>{{ item.description }}</p>
         </li>
