@@ -13,7 +13,7 @@ angular.module('confirmClick').
                     if ( window.confirm(msg) ) {
                         scope.$eval(clickAction);
                     } else {
-                        console.log("Cancelled");
+                        console.log("Cancelled"); 
                     }
                 });
             }

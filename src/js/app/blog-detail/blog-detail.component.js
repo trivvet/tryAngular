@@ -11,12 +11,37 @@ angular.module('blogDetail').
                     if (post.id == $routeParams.id) {
                         $scope.post = post;
                         $scope.notFound = false;
+                        resetReply(post);
                     }
                 });
-                if ($scope.notFound) {
-                    $location.path("/404");
-                }
             });
+            $scope.addReply = function() {
+                $scope.post.comments.push($scope.reply);
+                resetReply($scope.post);
+            }
+
+            $scope.deleteReply = function(comment) {
+                $scope.$apply(
+                    $scope.post.comments.splice(comment, 1)
+                );
+            }
+
+            function resetReply(post) {
+                var length = 0;
+                if (post.comments) {
+                    length = post.comments.length + 1;
+                } else {
+                    length = 1;
+                }
+                $scope.reply = {
+                    "id": length,
+                    "text": ""
+                }
+            }
+
+            if ($scope.notFound) {
+                $location.path("/404");
+            }
 
         }
     });
