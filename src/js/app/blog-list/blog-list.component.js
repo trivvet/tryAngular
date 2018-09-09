@@ -9,9 +9,24 @@ angular.module('blogList').
                     $location.path('/blog/' + item.id);        
                 });
             }
-            Post.query(function(data){
+
+            $scope.changeColumns = function(number) {
+                if (angular.isNumber(number)) {
+                    var colNumber = number;
+                } else {
+                    var colNumber = 3;
+                }
+                setupColumns($scope.items, colNumber);
+            }
+
+            function setupColumns(data, number) {
+                $scope.cssClass = 'col-sm-' + 12/number;
                 $scope.items = data;
-                $scope.new_items = chunkArrayInGroups(data, 3);
+                $scope.new_items = chunkArrayInGroups(data, number); 
+            }
+
+            Post.query(function(data){
+                setupColumns(data, 3)
             });
 
             function chunkArrayInGroups(array, unit) {
@@ -22,6 +37,17 @@ angular.module('blogList').
                 }
                 return results
             }
+
+            $scope.loadingQuery = false;
+            $scope.$watch(function(){
+                if($scope.blogFilter2) {
+                    $scope.loadingQuery = true;
+                    $scope.cssClass = 'col-sm-12';
+                } else if($scope.loadingQuery) {
+                    setupColumns($scope.items, 3);
+                    $scope.loadingQuery = false;
+                }
+            })
 
             $scope.title = "hello guys";
             $scope.click = 1;
