@@ -30,27 +30,6 @@
             </div>
         </div>
         <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="/templates/pagination.html" ng-hide="blogFilter.length > 0" pagination-id="listBlogs"></dir-pagination-controls>
-        <h1>Blog List v.2</h1>
-        <a href="#" ng-click="changeColumns(4)">Four columns</a>
-        <a href="#" ng-click="changeColumns(3)">Three columns</a>
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" ng-model="blogFilter2" />
-            </div>
-        </form>
-        <div class="row mb-3 mt-3" ng-repeat="column in new_items">
-            <div class="{{ cssClass }}" ng-repeat="item in column | filter: blogFilter2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.title }}</h5>
-                        <p class="card-text">{{ item.description }}</p>
-                        <a ng-href="#" confirm-click="Are you ready?" confirmed-click="goToItem(item)" class="btn btn-primary">Detail</a>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Created by {{ item.publishedDate }}</small>
-                    </div>
-                </div>
-            </div>
     </div>
 </div>
 
