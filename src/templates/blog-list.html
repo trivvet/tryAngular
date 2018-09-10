@@ -16,8 +16,8 @@
             </div>
         </form>
         <div class="card-columns">
-            <div class="card" dir-paginate="item in items | filter: blogFilter | itemsPerPage: 3 as postItems" pagination-id="listBlogs">
-    <!--             <img class="card-img-top" src="" alt="Card image cap"> -->
+            <div class="card" style: dir-paginate="item in items | filter: blogFilter | itemsPerPage: 5 as postItems" pagination-id="listBlogs">
+                <img ng-if="item.image" style="max-height: 200px;" class="card-img-top" ng-src="{{ item.image }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.title }}</h5>
                     <p class="card-text">{{ item.description }}</p>
@@ -25,6 +25,7 @@
                     <a ng-href="#" confirm-click="Are you ready?" confirmed-click="goToItem(item)" class="btn btn-primary">Detail</a>
                 </div>
             </div>
+
             <div ng-if="postItems.length == 0">
                 <span>Items not Found</span>
             </div>
