@@ -4,6 +4,7 @@ angular.module('blogList').
     component('someList', {
         templateUrl: "/templates/blog-list.html",
         controller: function(Post, $location, $routeParams, $rootScope, $scope){
+            $scope.ordering = '-publishedDate';
             $scope.goToItem = function(item) {
                 $rootScope.$apply(function() {
                     $location.path('/blog/' + item.id);        

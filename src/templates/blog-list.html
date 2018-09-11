@@ -11,12 +11,26 @@
     <div class="col">
         <h1>Blog List</h1>
         <form>
-            <div class="form-group">
-                <input type="text" class="form-control" ng-model="blogFilter" />
+            <div class="form-group row">
+                <label for="filter" class="col-sm-2 col-form-label">Filter</label>
+                <div class="col-sm-4">
+                    <input id="filter" type="text" class="form-control" ng-model="blogFilter" />
+                </div>
             </div>
+            <div class="form-group row">
+                <label for="order" class="col-sm-2 col-form-label">Order By:</label>
+                <div class="col-sm-4">
+                    <select id="order" class="form-control" ng-model="ordering">
+                        <option value="title">Title</option>
+                        <option value="-publishedDate">Start from newer</option>
+                        <option value="publishedDate">Start from older</option>
+                    </select>
+                </div>
+            </div>
+            <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="/templates/pagination.html" ng-hide="blogFilter.length > 0" pagination-id="listBlogs"></dir-pagination-controls>
         </form>
         <div class="card-columns">
-            <div class="card" style: dir-paginate="item in items | filter: blogFilter | itemsPerPage: 5 as postItems" pagination-id="listBlogs">
+            <div class="card" style: dir-paginate="item in items | orderBy: ordering | filter: blogFilter | itemsPerPage: 5 as postItems" pagination-id="listBlogs">
                 <img ng-if="item.image" style="max-height: 200px;" class="card-img-top" ng-src="{{ item.image }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.title }}</h5>
