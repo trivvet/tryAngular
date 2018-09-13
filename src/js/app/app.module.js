@@ -5,6 +5,7 @@ angular.module('try', [
     'ngResource',
     'ngRoute',
     'angularUtils.directives.dirPagination',
+    'ui.bootstrap',
 
     // internal
     'blogList',
