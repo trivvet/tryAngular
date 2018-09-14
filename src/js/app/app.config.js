@@ -17,6 +17,9 @@ angular.module('try').
                 when("/about", {
                     templateUrl: "/templates/about.html"
                 }).
+                when("/blog", {
+                    template: "<some-list></some-list>"
+                }).
                 when("/blog/:id", {
                     template: "<blog-detail></blog-detail>"
                 }).

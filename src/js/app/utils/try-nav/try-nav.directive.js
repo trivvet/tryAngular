@@ -12,6 +12,10 @@ angular.module('tryNav').
                     $location.path('/blog/' + $item.id); 
                     scope.blogFilter = "";      
                 }
+                scope.searchItem = function(){
+                    $location.path('/blog').search('q', scope.blogFilter);
+                    scope.blogFilter = ""; 
+                }
             }
         }
     });

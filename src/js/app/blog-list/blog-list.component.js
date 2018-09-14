@@ -4,6 +4,10 @@ angular.module('blogList').
     component('someList', {
         templateUrl: "/templates/blog-list.html",
         controller: function(Post, $location, $routeParams, $rootScope, $scope){
+            if($routeParams.q) {
+                $scope.blogFilter = $routeParams.q;
+                $scope.searchHeader = true;
+            }
             $scope.ordering = '-publishedDate';
             $scope.goToItem = function(item) {
                 $rootScope.$apply(function() {
@@ -44,18 +48,11 @@ angular.module('blogList').
                 if($scope.blogFilter2) {
                     $scope.loadingQuery = true;
                     $scope.cssClass = 'col-sm-12';
+                    $scope.searchHeader = false;
                 } else if($scope.loadingQuery) {
                     setupColumns($scope.items, 3);
                     $scope.loadingQuery = false;
                 }
-            })
-
-            $scope.title = "hello guys";
-            $scope.click = 1;
-            $scope.onlyTest = function(){
-                console.log("is Clicked");
-                $scope.title = "is clicked " + $scope.click;
-                $scope.click += 1;
-            }
+            });
         }
     });
