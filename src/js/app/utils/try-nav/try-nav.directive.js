@@ -1,24 +1,17 @@
 'use strict';
 
 angular.module('tryNav').
-    directive('tryNav', function(Post) {
+    directive('tryNav', function(Post, $location, $rootScope) {
         return {
             restrict: "E",
             templateUrl: '/templates/nav-bar.html',
             link: function (scope, element, attr) {
                 var getElements = []
-                Post.query(function(data) {
-                    scope.getElements = data;
-                });
-                // element.find("input").bind("input", function(event) {
-                //     var answers = []
-                //     getElements.forEach(function(findItem) {
-                //         if (findItem.title.search(scope.blogFilter) > 0) {
-                //             answers.push(findItem);
-                //         }
-                //     });
-                //     scope.answers = answers;
-                // });
+                scope.getElements = Post.query();
+                scope.selectItem = function($item, $model, $label) {
+                    $location.path('/blog/' + $item.id); 
+                    scope.blogFilter = "";      
+                }
             }
         }
     });
