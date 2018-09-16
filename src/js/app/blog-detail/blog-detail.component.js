@@ -11,10 +11,11 @@ angular.module('blogDetail').
                     if (post.id == $routeParams.id) {
                         $scope.post = post;
                         $scope.notFound = false;
-                        resetReply(post);
+                        checkCommentsLength($scope.post.comments);
                     }
                 });
             });
+
             $scope.addReply = function() {
                 $scope.post.comments.push($scope.reply);
                 resetReply($scope.post);
@@ -22,8 +23,18 @@ angular.module('blogDetail').
 
             $scope.deleteReply = function(comment) {
                 $scope.$apply(
-                    $scope.post.comments.splice(comment, 1)
+                    $scope.post.comments.splice(comment, 1),
+                    checkCommentsLength($scope.post.comments)
                 );
+                
+            }
+
+            function checkCommentsLength(comments) {
+                if (comments && comments.length > 0) {
+                    $scope.commentsExist = true;
+                } else {
+                    $scope.commentsExist = false;
+                }
             }
 
             function resetReply(post) {
@@ -33,6 +44,7 @@ angular.module('blogDetail').
                 } else {
                     length = 1;
                 }
+                $scope.commentsExist = true;
                 $scope.reply = {
                     "id": length,
                     "text": ""

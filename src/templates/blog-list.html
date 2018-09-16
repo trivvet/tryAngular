@@ -23,12 +23,12 @@
         </form>
         <div class="card-columns">
             <div class="card" style: dir-paginate="item in items | orderBy: ordering | filter: blogFilter | itemsPerPage: 5 as postItems" pagination-id="listBlogs">
-                <img ng-if="item.image" style="max-height: 200px;" class="card-img-top" ng-src="{{ item.image }}" alt="Card image cap">
+                <a ng-href="/blog/{{ item.id }}" ng-if="item.image"><img ng-if="item.image" style="max-height: 200px;" class="card-img-top" ng-src="{{ item.image }}" alt="Card image cap"></a>
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
+                    <h5 class="card-title"><a ng-href="/blog/{{ item.id }}">{{ item.title }}</a></h5>
                     <p class="card-text">{{ item.description }}</p>
                     <p class="card-text"><small class="text-muted">{{ item.publishedDate }}</small></p>
-                    <a ng-href="#" confirm-click="Are you ready?" confirmed-click="goToItem(item)" class="btn btn-primary">Detail</a>
+                    <a ng-href="/blog/{{ item.id }}" class="btn btn-primary">Detail</a>
                 </div>
             </div>
 
